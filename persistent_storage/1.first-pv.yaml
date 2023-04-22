@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: first-pv
+  labels:
+    type: local
+
+spec:
+  storageClassName: standard
+  accessModes:
+    - "ReadWriteOnce"
+  capacity:
+    storage: 1Gi
+  persistentVolumeReclaimPolicy: Retain #When a claim is deleted, the PV is not deleted
+  hostPath:
+    path: /var/lib/k8s-pv/test
+

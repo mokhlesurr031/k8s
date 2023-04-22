@@ -2,7 +2,7 @@
 
 
 ```
-hoosing between the two types of services is extremely simple, basically because they are 
+Choosing between the two types of services is extremely simple, basically because they are 
 not meant for the same thing.
 If you need your app to be accessible from outside the cluster, then you'll need a 
 NodePort service, but if you need your app to be accessible from inside the cluster, then 

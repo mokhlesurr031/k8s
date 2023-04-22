@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-clusterip
+spec:
+  type: ClusterIP #app to be accessible from inside the cluster
+  ports:
+  - port: 80 #port exposed by the service
+    targetPort: 80 #destination port on the pods
+    protocol: TCP 
+  selector:
+    app: nginx-clusterip # selector field is used to specify the pods that the nginx-clusterip service should target.
+
