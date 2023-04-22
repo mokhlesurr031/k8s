@@ -1,0 +1,23 @@
+# By default, the Kubernetes job will try to relaunch the failing Pod 6 times during 
+# the next 6 minutes after its failure. You can change this limitation by changing the 
+# backoffLimit option
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hello-job-backoff-limit
+spec:
+  backoffLimit: 3 #onfailure, how many time it will try to start, default is 6
+  activeDeadlineSeconds: 20 #stop job after a specific time
+  ttlSecondsAfterFinished: 30 #delete jobs after time
+  template:
+    metadata:
+      name: hello-job-backoff-limit
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: hello-backoff-limit-container 
+          image: busybox
+          command: ["/bin/sh", "-c"]
+          args: ["echo 'Hello World'"]
+

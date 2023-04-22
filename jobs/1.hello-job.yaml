@@ -1,0 +1,16 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hello-job
+spec:
+  template:
+    metadata:
+      name: hello-job 
+
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: hello-container 
+          image: busybox 
+          command: ["/bin/sh", "-c"]
+          args: ["echo 'Hello World'"]

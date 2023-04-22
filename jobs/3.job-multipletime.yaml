@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: job-multiple
+spec:
+  completions: 10
+  template:
+    metadata:
+      name: job-multiple
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: job-multiple-container 
+          image: busybox
+          command: ["/bin/sh", "-c"]
+          args: ["echo 'Hello multiple'"]
+      

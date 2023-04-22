@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: job-multiple-parallelism
+spec:
+  parallelism: 3
+  template:
+    metadata:
+      name: job-multiple-parallelism
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: job-multiple-container 
+          image: busybox
+          command: ["/bin/sh", "-c"]
+          args: ["echo 'Hello multiple'"]
+      

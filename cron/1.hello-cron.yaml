@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: hello-cron
+spec:
+  schedule: "*/3 * * * *"  # sec, min, h, day, month, year
+  # ttlSecondsAfterFinished: 40
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          name: hello-cron
+        spec:
+          restartPolicy: OnFailure
+          containers:
+          - name: hello-cron-container
+            image: busybox
+            command: ["/bin/sh", "-c"]
+            args:
+            - echo 'Hello Cron'
+
+# */3 * * * * * (every 3 seconds) 
+# 3 * * * * * (third second of every minute) 

@@ -1,0 +1,14 @@
+apiVersion: v1 
+kind: Pod 
+metadata:
+  annotations:
+    tier: webserver 
+  name: nginx-annotation-pod 
+  labels:
+    environment: prod-annotation 
+    tier: frontend-annotation 
+
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx:latest
